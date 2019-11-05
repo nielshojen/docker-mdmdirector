@@ -6,7 +6,7 @@ WORKDIR /go/src/project/
 RUN go build
 
 FROM alpine
-COPY --from=build /bin/project/mdmdirector/build/linux/mdmdirector-* /usr/local/bin/mdmdirector
+COPY --from=build /go/src/project/mdmdirector/build/linux/mdmdirector-* /usr/local/bin/mdmdirector
 RUN mkdir /certs
 COPY run.sh /run.sh
 RUN chmod a+x /run.sh
