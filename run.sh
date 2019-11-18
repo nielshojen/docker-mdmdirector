@@ -8,7 +8,7 @@ if [[ ${CERT_FILE} ]]; then
 fi
 
 # Database connection string - Required
-if [[ ${DB_SSL} = true ]]; then
+if [[ "${DB_SSL}" = "true" ]]; then
   DB_SSL="enable"
 else
   DB_SSL="disable"
@@ -22,7 +22,7 @@ else
 fi
 
 # Enable debug mode
-if [[ ${DEBUG} = true ]]; then
+if [[ "${DEBUG}" = "true" ]]; then
   execServe="${execServe} -debug"
 fi
 
@@ -71,12 +71,12 @@ if [[ ${CERT_KEY} ]] && [[ ${CERT_FILE} ]]; then
 fi
 
 # Re-push profiles if the device's build number changes
-if [[ ${PUSH_BUILD} = false ]]; then
+if [[ "${PUSH_BUILD}" = "false" ]]; then
   execServe="${execServe} -push-new-build ${PUSH_BUILD}"
 fi
 
 # Sign profiles prior to sending to MicroMDM
-if [[ ${SIGN_PROFILE} = true ]] && [[ ${CERT_FILE} ]]; then
+if [[ "${SIGN_PROFILE}" = "true" ]] && [[ ${CERT_FILE} ]]; then
   execServe="${execServe} -sign ${SIGN_PROFILE}"
 fi
 
