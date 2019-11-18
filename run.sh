@@ -46,7 +46,7 @@ fi
 
 # MicroMDM Server URL - Required
 if [[ ${MDM_URL} ]]; then
-  execServe="${execServe} -micromdmurl ${MDM_URL}"
+  execServe="${execServe} -micromdmurl=${MDM_URL}"
 else
   /bin/echo "No MicroMDM URL Set - Exiting"
   exit 1
