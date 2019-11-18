@@ -11,4 +11,5 @@ RUN mkdir /certs
 COPY run.sh /run.sh
 RUN chmod a+x /run.sh
 VOLUME ["/certs"]
+EXPOSE 8000
 CMD ["/run.sh"]
