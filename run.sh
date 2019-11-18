@@ -4,7 +4,7 @@ execServe="/usr/local/bin/mdmdirector"
 
 # Path to the signing certificate or p12 file
 if [[ ${CERT_FILE} ]]; then
-  execServe="${execServe} -cert ${CERT_FILE}"
+  execServe="${execServe} -cert=${CERT_FILE}"
 fi
 
 # Database connection string - Required
@@ -15,7 +15,7 @@ else
 fi
 
 if [[ ${DB_HOST} ]] && [[ ${DB_PORT} ]] && [[ ${DB_USER} ]] && [[ ${DB_NAME} ]] && [[ ${DB_PASS} ]] && [[ ${DB_SSL} ]]; then
-  execServe="${execServe} -dbconnection host=${DB_HOST} port=${DB_PORT} user=${DB_USER} dbname=${DB_NAME} password=${DB_PASS} sslmode=${DB_SSL}"
+  execServe="${execServe} -dbconnection=\"host=${DB_HOST} port=${DB_PORT} user=${DB_USER} dbname=${DB_NAME} password=${DB_PASS} sslmode=${DB_SSL}\""
 else
   /bin/echo "No DB connection set up - Exiting"
   exit 1
@@ -28,17 +28,17 @@ fi
 
 # Password to decrypt the signing key or p12 file
 if [[ ${CERT_PASS} ]] && [[ ${CERT_FILE} ]]; then
-  execServe="${execServe} -key-password ${CERT_PASS}"
+  execServe="${execServe} -key-password=${CERT_PASS}"
 fi
 
 # Log level
 if [[ ${LOGLEVEL} ]]; then
-  execServe="${execServe} -loglevel ${LOGLEVEL}"
+  execServe="${execServe} -loglevel=${LOGLEVEL}"
 fi
 
 # MicroMDM Server API Key - Required
 if [[ ${API_KEY} ]]; then
-  execServe="${execServe} -micromdmapikey ${API_KEY}"
+  execServe="${execServe} -micromdmapikey=\"${API_KEY}\""
 else
   /bin/echo "No MicroMDM API Key Set - Exiting"
   exit 1
@@ -46,7 +46,7 @@ fi
 
 # MicroMDM Server URL - Required
 if [[ ${MDM_URL} ]]; then
-  execServe="${execServe} -micromdmurl=${MDM_URL}"
+  execServe="${execServe} -micromdmurl=\"${MDM_URL}\""
 else
   /bin/echo "No MicroMDM URL Set - Exiting"
   exit 1
@@ -54,7 +54,7 @@ fi
 
 # Password used for basic authentication - Required
 if [[ ${PASSWORD} ]]; then
-  execServe="${execServe} -password ${PASSWORD}"
+  execServe="${execServe} -password=${PASSWORD}"
 else
   /bin/echo "No Password Set - Exiting"
   exit 1
