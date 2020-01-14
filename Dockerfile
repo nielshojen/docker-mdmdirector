@@ -6,6 +6,7 @@ WORKDIR /go/src/project/
 RUN go build
 
 FROM alpine
+RUN apk --update add ca-certificates
 COPY --from=build /go/src/project/mdmdirector /usr/local/bin/mdmdirector
 RUN mkdir /certs
 COPY run.sh /run.sh
