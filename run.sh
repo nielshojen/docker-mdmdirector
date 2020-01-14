@@ -15,7 +15,7 @@ else
 fi
 
 if [[ ${DB_HOST} ]] && [[ ${DB_PORT} ]] && [[ ${DB_USER} ]] && [[ ${DB_NAME} ]] && [[ ${DB_PASS} ]] && [[ ${DB_SSL} ]]; then
-  execServe="${execServe} -dbconnection=\"host=${DB_HOST} port=${DB_PORT} user=${DB_USER} dbname=${DB_NAME} password=${DB_PASS} sslmode=${DB_SSL}\""
+  execServe="${execServe} -db-host=${DB_HOST} -db-port=${DB_PORT} -db-username=${DB_USER} -db-name=${DB_NAME} -db-password=${DB_PASS} -db-sslmode=${DB_SSL}"
 else
   /bin/echo "No DB connection set up - Exiting"
   exit 1
