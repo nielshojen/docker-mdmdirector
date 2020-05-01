@@ -60,6 +60,12 @@ else
   exit 1
 fi
 
+#  HTTP endpoint to escrow erase and unlock PINs to
+if [[ ${ESCROWURL} ]]; then
+  execServe="${execServe} -escrowurl ${ESCROWURL}"
+fi
+
+
 # Port number to run mdmdirector on
 if [[ ${PORT} ]]; then
   execServe="${execServe} -port ${PORT}"
