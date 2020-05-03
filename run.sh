@@ -62,7 +62,7 @@ fi
 
 #  HTTP endpoint to escrow erase and unlock PINs to
 if [[ ${ESCROWURL} ]]; then
-  execServe="${execServe} -escrowurl=\"${ESCROWURL}\"""
+  execServe="${execServe} -escrowurl=\"${ESCROWURL}\""
 fi
 
 
