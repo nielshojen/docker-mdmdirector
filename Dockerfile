@@ -1,16 +1,16 @@
-FROM golang:alpine AS build
-
-RUN apk add --no-cache git
-RUN git clone https://github.com/mdmdirector/mdmdirector.git /go/src/project
-WORKDIR /go/src/project/
-RUN go build
-
 FROM alpine
-RUN apk --update add ca-certificates
-COPY --from=build /go/src/project/mdmdirector /usr/local/bin/mdmdirector
+
+ENV MDMDIRECTOR_VERSION="0.0.7"
+
+RUN apk --update add curl ca-certificates
+RUN /usr/bin/curl https://github.com/mdmdirector/mdmdirector/releases/download/v${MDMDIRECTOR_VERSION}/mdmdirector-linux -o /usr/local/bin/mdmdirector
 RUN mkdir /certs
+
 COPY run.sh /run.sh
 RUN chmod a+x /run.sh
+
 VOLUME ["/certs"]
+
 EXPOSE 8000
+
 CMD ["/run.sh"]
