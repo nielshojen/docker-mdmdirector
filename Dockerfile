@@ -4,6 +4,7 @@ ENV MDMDIRECTOR_VERSION="0.0.7"
 
 RUN apk --update add curl ca-certificates
 RUN /usr/bin/curl https://github.com/mdmdirector/mdmdirector/releases/download/v${MDMDIRECTOR_VERSION}/mdmdirector-linux -o /usr/local/bin/mdmdirector
+RUN chmod +x /usr/local/bin/mdmdirector
 RUN mkdir /certs
 
 COPY run.sh /run.sh
