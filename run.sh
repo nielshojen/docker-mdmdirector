@@ -53,7 +53,7 @@ if [[ ! ${MICRO_URL} ]]; then
 fi
 
 # Password used for basic authentication - Required
-if [[ ${DIRECTOR_PASSWORD} ]]; then
+if [[ ! ${DIRECTOR_PASSWORD} ]]; then
 #  execServe="${execServe} -password=${PASSWORD}"
 #else
   /bin/echo "No Password Set - Exiting"
