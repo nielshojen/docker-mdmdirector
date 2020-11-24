@@ -37,7 +37,7 @@ fi
 #fi
 
 # MicroMDM Server API Key - Required
-if [[ ! ${MICRO_API_} ]]; then
+if [[ ! ${MICRO_API_KEY} ]]; then
 #  execServe="${execServe} -micromdmapikey=\"${MICRO_API_KEY}\""
 #else
   /bin/echo "No MicroMDM API Key Set - Exiting"
