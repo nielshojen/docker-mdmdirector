@@ -11,6 +11,9 @@ fi
 
 if [[ ${DB_HOST} ]] && [[ ${DB_PORT} ]] && [[ ${DB_USER} ]] && [[ ${DB_NAME} ]] && [[ ${DB_PASS} ]] && [[ ${DB_SSL} ]]; then
   execServe="${execServe} -db-host=${DB_HOST} -db-port=${DB_PORT} -db-username=${DB_USER} -db-name=${DB_NAME} -db-password=${DB_PASS} -db-sslmode=${DB_SSL}"
+  if [[ ${DB_MAx_CONN} ]]; then
+    execServe="${execServe} -db-max-connections=${DB_MAx_CONN}"
+  fi
 else
   /bin/echo "No DB connection set up - Exiting"
   exit 1
