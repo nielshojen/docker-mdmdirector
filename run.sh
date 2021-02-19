@@ -16,6 +16,10 @@ else
   exit 1
 fi
 
+if [[ ! ${REDIS_HOST} ]]; then
+  exit 1
+fi
+
 # MicroMDM Server API Key - Required
 if [[ ! ${MICRO_API_KEY} ]]; then
   /bin/echo "No MicroMDM API Key Set - Exiting"
