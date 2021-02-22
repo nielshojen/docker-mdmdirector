@@ -1,5 +1,7 @@
 #!/bin/sh
 
+/bin/echo "Starting MDMDirector ... Maybe ..."
+
 execServe="/usr/local/bin/mdmdirector"
 
 # Database connection string - Required
@@ -16,10 +18,6 @@ if [[ ${DB_HOST} ]] && [[ ${DB_PORT} ]] && [[ ${DB_USER} ]] && [[ ${DB_NAME} ]] 
   fi
 else
   /bin/echo "No DB connection set up - Exiting"
-  exit 1
-fi
-
-if [[ ! ${REDIS_HOST} ]]; then
   exit 1
 fi
 
