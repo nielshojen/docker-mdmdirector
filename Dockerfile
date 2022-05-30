@@ -1,6 +1,6 @@
 FROM alpine
 
-ENV MDMDIRECTOR_VERSION="0.3.1"
+ENV MDMDIRECTOR_VERSION="0.4.0"
 
 RUN apk --update add curl ca-certificates
 RUN /usr/bin/curl -L https://github.com/mdmdirector/mdmdirector/releases/download/v${MDMDIRECTOR_VERSION}/mdmdirector-linux -o /usr/local/bin/mdmdirector
