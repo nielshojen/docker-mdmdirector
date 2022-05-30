@@ -1,5 +1,10 @@
 FROM golang:latest as builder
 
+FROM golang:alpine as builder
+
+RUN apk add --no-cache make git
+RUN git clone https://github.com/mdmdirector/mdmdirector.git /go/src/github.com/mdmdirector/mdmdirector/
+
 WORKDIR /go/src/github.com/mdmdirector/mdmdirector/
 
 ENV CGO_ENABLED=0 \
