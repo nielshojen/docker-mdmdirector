@@ -1,9 +1,22 @@
+FROM golang:latest as builder
+
+WORKDIR /go/src/github.com/mdmdirector/mdmdirector/
+
+ENV CGO_ENABLED=0 \
+    GOARCH=amd64 \
+    GOOS=linux
+
+COPY . .
+
+RUN make deps
+RUN make
+
+
 FROM alpine
 
-ENV MDMDIRECTOR_VERSION="0.3.1"
+RUN apk --update add ca-certificates
 
-RUN apk --update add curl ca-certificates
-RUN /usr/bin/curl -L https://github.com/mdmdirector/mdmdirector/releases/download/v${MDMDIRECTOR_VERSION}/mdmdirector-linux -o /usr/local/bin/mdmdirector
+COPY --from=builder /go/src/github.com/mdmdirector/mdmdirector/build/linux/mdmdirector /usr/local/bin/mdmdirector
 RUN chmod +x /usr/local/bin/mdmdirector
 
 COPY run.sh /run.sh
